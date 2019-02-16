@@ -1,56 +1,83 @@
 <template>
-  <div id="app">
-    <div id="topbar"></div>
+  <div id="app" class="container">
+    <h1>Critter Mound v2.0</h1>
+    <div class="appHeader">
+        <div class="totalSod">Sod {{ totalSod }}</div>
+        <b-button v-on:click="save">Save</b-button>
+        <div v-show="stateSaved" class="alert alert-info">State saved</div>
+    </div>
     <b-tabs>
-      <b-tab title="Hatchery" active>
-        <hatchery></hatchery>
+      <b-tab :title="'Royal Hatchery '+royalHatchery.current+' / '+royalHatchery.max" active>
+        <royal-hatchery></royal-hatchery>
       </b-tab>
-      <b-tab title="Laboratory" v-if="Math.random() > 0.5">
-        <laboratory></laboratory>
+      <b-tab :title="'Worker '+worker.current+' / '+worker.max">
+        <worker></worker>
       </b-tab>
-      <b-tab title="Labour">
-        <labour></labour>
+      <b-tab :title="'Soldiers '+army.current+' / '+army.max">
+        <soldiers></soldiers>
       </b-tab>
-      <b-tab title="War">
-        <war></war>
+      <b-tab :title="'Achievements '+achievement.current+' / '+achievement.max">
+        <achievement></achievement>
       </b-tab>
-      <b-tab title="Achievements">
-        <achievements></achievements>
-      </b-tab>
-      <b-tab title="How to play">
-        <how-to-play></how-to-play>
+      <b-tab title="How To Play">
+        <how-to></how-to>
       </b-tab>
     </b-tabs>
   </div>
 </template>
 
 <script>
-import Hatchery from './views/Hatchery.vue'
-import Laboratory from './views/Laboratory.vue'
-import Labour from './views/Labour.vue'
-import War from './views/War.vue'
-import Achievements from './views/Achievements.vue'
-import HowToPlay from './views/HowToPlay.vue'
+  import RoyalHatchery from './views/RoyalHatchery.vue'
+  import Worker from './views/Worker.vue'
+  import Soldiers from './views/Soldiers.vue';
+  import Achievement from './views/Achievement.vue';
+  import HowTo from './views/HowTo.vue'
+  import { SmartRound } from './lib/Helpers'
 
-export default {
-  name: 'App',
-  components: {
-    'hatchery' : Hatchery,
-    'laboratory' : Laboratory,
-    'labour' : Labour,
-    'war' : War,
-    'achievements' : Achievements,
-    'how-to-play' : HowToPlay
+
+  export default {
+    name: 'app',
+    components: {
+      'royal-hatchery': RoyalHatchery,
+      'worker': Worker,
+      'soldiers': Soldiers,
+      'achievement': Achievement,
+      'how-to': HowTo
+    },
+    computed: {
+      royalHatchery() {
+        return this.$store.getters.royalHatcheryAlloc
+      },
+      worker() {
+        return this.$store.getters.workerAlloc
+      },
+      army() {
+        return this.$store.getters.armyAlloc
+      },
+      achievement() {
+        return this.$store.getters.achievementQuota
+      },
+      totalSod() {
+        return SmartRound(this.$store.getters.totalSod)
+      },
+      stateSaved() {
+        return this.$store.getters.showStateSaved
+      }
+    },
+    methods: {
+      save: function() {
+        this.$store.dispatch('saveToStorage')
+      }
+    }
   }
-}
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<style scoped>
+  .appHeader {
+    float: right;
+  }
+  .totalSod {
+    font-size: 20px;
+    font-weight: bold;
 }
 </style>
