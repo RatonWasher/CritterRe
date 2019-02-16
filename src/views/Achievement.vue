@@ -1,6 +1,6 @@
 <template>
   <div id="achievements">
-    <div v-bind="achievement in allAchievements">
+    <div v-for="achievement in allAchievements">
       <b-alert show :variant="achievement.unlocked ? 'info' : 'light'">
         <strong>{{ achievement.name }}</strong>
         <span>{{ achievement.description }}</span>
