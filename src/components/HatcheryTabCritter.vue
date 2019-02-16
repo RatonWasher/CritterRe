@@ -14,32 +14,25 @@
 
           <!--TODO Afficher plusieurs critters -->
           <tr>
-          <td>{{sexe}}</td>
-          <td>{{score}}</td>
-          <td>{{vitalite}}</td>
-          <td>{{force}}</td>
-          <td>{{agilite}}</td>
-          <td>{{bite}}</td>
-          <td>{{piqure}}</td>
+          <td>{{critter.sex}}</td>
+          <td>{{critter.score}}</td>
+          <td>{{critter.vitality}}</td>
+          <td>{{critter.strength}}</td>
+          <td>{{critter.agility}}</td>
+          <td>{{critter.bite}}</td>
+          <td>{{critter.sting}}</td>
           </tr>
-
       </table>
   </div>  
 
 </template>
 
 <script>
+import Criterra from '../lib/Criterra.js'
   export default {
       props: {
-          //Remplacer par liste de critter avec un petit v-let dans le template
-          sexe: String,
-          score: Number,
-          vitalite: Number,
-          force: Number,
-          agilite: Number,
-          bite: Number,
-          piqure: Number
-      }
+        critter: Criterra
+      },       
   };
 </script>
 

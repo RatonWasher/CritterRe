@@ -8,8 +8,9 @@
           <td>King</td>
         </tr>
         <tr>
-          <td><hatchery-tab v-bind:score="32"></hatchery-tab></td>
-          <td><hatchery-tab></hatchery-tab></td>
+          
+          <td><hatchery-tab v-bind:critter="geneHatch.King"></hatchery-tab></td>
+          <!--<td><hatchery-tab></hatchery-tab></td>-->
         </tr>
 
         <tr>
@@ -18,8 +19,9 @@
         </tr>
 
         <tr>
+<!--
           <td><hatchery-tab></hatchery-tab></td>
-          <td><hatchery-tab></hatchery-tab></td>
+          <td><hatchery-tab></hatchery-tab></td>-->
         </tr>
 
 
@@ -31,10 +33,18 @@
 
 <script>
   import HatcheryTabCritter from '../components/HatcheryTabCritter.vue'
+  import Hatchery from '../lib/Hatchery.js'
+  import Criterra from '../lib/Criterra.js'
 
   export default {
       components: {
        'hatchery-tab' : HatcheryTabCritter, 
+    },
+
+    computed: {
+      geneHatch() {        
+        return new Hatchery();
+      }
     }
   };
   
