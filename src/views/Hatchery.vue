@@ -34,7 +34,7 @@
 <script>
   import HatcheryTabCritter from '../components/HatcheryTabCritter.vue'
   import Hatchery from '../lib/Hatchery.js'
-  import Criterra from '../lib/Criterra.js'
+  import Critter from '../lib/Critter.js'
 
   export default {
       components: {

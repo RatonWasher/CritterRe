@@ -1,15 +1,13 @@
-import Criterra from '../lib/Criterra';
-
+import Critter from '../lib/Critter';
 
 class Hatchery {
     constructor() {
-        this.King = new Criterra()
-        this.Queen = new Criterra();
-        this.HatcheryKing = [new Criterra(), new Criterra()];
-        this.HatcheryQueen = [new Criterra(), new Criterra()];
+        this.King = new Critter();
+        this.Queen = new Critter();
+        this.HatcheryKing = [new Critter(), new Critter()];
+        this.HatcheryQueen = [new Critter(), new Critter()];
         this.HatcheryKingMaxSize = 1;
         this.HatcherYQueenMaxSize = 1;
-
     }
 }
 

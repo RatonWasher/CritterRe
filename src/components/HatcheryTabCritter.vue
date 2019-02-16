@@ -1,6 +1,5 @@
 <template>
   <div id="hatcheryTabCritter">
-
       <table class="table table-bordered">
           <tr>
           <th>Sexe</th>
@@ -14,13 +13,13 @@
 
           <!--TODO Afficher plusieurs critters -->
           <tr>
-          <td>{{critter.sex}}</td>
+          <td>{{critter.gender}}</td>
           <td>{{critter.score}}</td>
-          <td>{{critter.vitality}}</td>
-          <td>{{critter.strength}}</td>
-          <td>{{critter.agility}}</td>
-          <td>{{critter.bite}}</td>
-          <td>{{critter.sting}}</td>
+          <td>{{critter.caracteristics[0].value}}</td>
+          <td>{{critter.caracteristics[1].value}}</td>
+          <td>{{critter.caracteristics[2].value}}</td>
+          <td>{{critter.caracteristics[3].value}}</td>
+          <td>{{critter.caracteristics[4].value}}</td>
           </tr>
       </table>
   </div>  
@@ -28,10 +27,11 @@
 </template>
 
 <script>
-import Criterra from '../lib/Criterra.js'
+  import Critter from '../lib/Critter.js'
+
   export default {
       props: {
-        critter: Criterra
+        critter: Critter
       },       
   };
 </script>
