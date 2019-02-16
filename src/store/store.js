@@ -9,7 +9,7 @@ const initStore = async () => {
     try{
         //Load save if existing
     }
-    catch{
+    catch(err){
         //Create new save
     };
 
@@ -24,3 +24,12 @@ const initStore = async () => {
 
     return store;
 }
+
+export default (cb, reinitialize = false) => {
+    if (store && !reinitialize) {
+      cb(store);
+    } else {
+      initStore().then(cb)
+    }
+  }
+  
