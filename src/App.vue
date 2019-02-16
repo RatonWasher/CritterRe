@@ -17,7 +17,7 @@
       <b-tab title="Achievements">
         <achievements></achievements>
       </b-tab>
-      <b-tab title="How to play issou">
+      <b-tab title="How to play">
         <how-to-play></how-to-play>
       </b-tab>
     </b-tabs>
